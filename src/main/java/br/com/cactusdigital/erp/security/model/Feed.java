@@ -1,10 +1,18 @@
 package br.com.cactusdigital.erp.security.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
 
 @Table(name = "feed")
 @Entity
@@ -14,9 +22,18 @@ public class Feed {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	private String nome;
+	@Column(name = "codigo_usuario")
+	@ManyToOne
+	@JoinColumn(name="CODIGO_USUARIO")
+	private Usuario usuario;
 	
-	private String descricao;
+	@Column(name = "like_count")
+	private Long likeCount;
+	
+	private String url;
+	
+	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Comments> contatos;
 
 	public Long getCodigo() {
 		return codigo;
@@ -26,19 +43,35 @@ public class Feed {
 		this.codigo = codigo;
 	}
 
-	public String getNome() {
-		return nome;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setNome(String nome) {
-		this.nome = nome;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public Long getLikeCount() {
+		return likeCount;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setLikeCount(Long likeCount) {
+		this.likeCount = likeCount;
 	}
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
+
+	public List<Comments> getContatos() {
+		return contatos;
+	}
+
+	public void setContatos(List<Comments> contatos) {
+		this.contatos = contatos;
+	}	
 }
