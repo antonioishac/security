@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -18,15 +16,17 @@ public class Comments {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
+	
+	@Column(name = "codigo_feed")
+	private Long codigoFeed;
 		
-	@ManyToOne
-	@JoinColumn(name="codigo_usuario")
-	private Usuario usuario;
+	@Column(name="codigo_usuario")
+	private Long codigoUsuario;
 	
 	@Column(name = "codigo_photo")
 	private Long codigoPhoto;
 	
-	@Column(name = "data_comment")
+	@Column(name = "data_comments")
 	private LocalDate dataComment;
 	
 	private String txt;
@@ -40,15 +40,7 @@ public class Comments {
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-
-	public Usuario getUsuario() {
-		return usuario;
-	}
-
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
-	}
-
+	
 	public Long getCodigoPhoto() {
 		return codigoPhoto;
 	}
@@ -79,5 +71,21 @@ public class Comments {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public Long getCodigoFeed() {
+		return codigoFeed;
+	}
+
+	public void setCodigoFeed(Long codigoFeed) {
+		this.codigoFeed = codigoFeed;
+	}
+
+	public Long getCodigoUsuario() {
+		return codigoUsuario;
+	}
+
+	public void setCodigoUsuario(Long codigoUsuario) {
+		this.codigoUsuario = codigoUsuario;
 	}	
 }

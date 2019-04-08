@@ -8,11 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
 
 @Table(name = "feed")
 @Entity
@@ -22,17 +19,15 @@ public class Feed {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
-	@Column(name = "codigo_usuario")
-	@ManyToOne
-	@JoinColumn(name="CODIGO_USUARIO")
-	private Usuario usuario;
+	@Column(name="codigo_usuario")
+	private Long codigUsuario;
 	
 	@Column(name = "like_count")
 	private Long likeCount;
 	
 	private String url;
 	
-	@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "codigoUsuario", cascade = CascadeType.ALL)
     private List<Comments> contatos;
 
 	public Long getCodigo() {
@@ -43,12 +38,12 @@ public class Feed {
 		this.codigo = codigo;
 	}
 
-	public Usuario getUsuario() {
-		return usuario;
+	public Long getCodigUsuario() {
+		return codigUsuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setCodigUsuario(Long codigUsuario) {
+		this.codigUsuario = codigUsuario;
 	}
 
 	public Long getLikeCount() {
@@ -73,5 +68,7 @@ public class Feed {
 
 	public void setContatos(List<Comments> contatos) {
 		this.contatos = contatos;
-	}	
+	}
+
+		
 }
