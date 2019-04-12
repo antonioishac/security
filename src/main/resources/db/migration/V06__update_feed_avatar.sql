@@ -1,0 +1,1 @@
+update feed set avatar = 'https://fusionhealthcare.com.br/avatarApp/avatar.png' where codigo = 1;
