@@ -1,1 +1,0 @@
-ALTER TABLE feed ADD is_like varchar(1);

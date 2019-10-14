@@ -14,21 +14,83 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.3.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
+		<version>2.1.4.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<guava.version>15.0</guava.version>
+		        
+        <!-- Versao Swagger -->
+        <swagger.version>2.8.0</swagger.version>
+		
+		<!-- Versao commons-lang3 -->
+        <commons-lang3.version>3.4</commons-lang3.version>
+		
+		<!-- Versao do MapStruct -->
+        <version-map-struct>1.2.0.Final</version-map-struct>
+		
+		<!-- Versao liquibase -->
+        <liquibase.version>3.6.3</liquibase.version>
+
+        <javassist.version>3.20.0-GA</javassist.version>
+
+        <liquibase-maven-plugin.version>3.6.3</liquibase-maven-plugin.version>
+        <liquibase-hibernate5.version>3.6</liquibase-hibernate5.version>
+
+        <validation-api.version>1.1.0.Final</validation-api.version>
+
+        <spring-boot.version>2.1.4.RELEASE</spring-boot.version>      
+        
+        <validation-api.version>2.0.1.Final</validation-api.version>
+        <javassist.version>3.24.0-GA</javassist.version>
+        
+        <hibernate.version>5.4.1.Final</hibernate.version>
+        
+        <spring-security-oauth2.version>2.2.1.RELEASE</spring-security-oauth2.version>
+		<spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
+
+        <profile.no-liquibase />
 	</properties>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Greenwich.RELEASE</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 	<dependencies>
+		
+		<dependency>
+		    <groupId>org.springframework.cloud</groupId>
+		    <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		
+		<!-- Cloud Config Client -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-client</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
+		
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-jpamodelgen</artifactId>
+		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -39,6 +101,7 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -73,7 +136,6 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-			<version>3.4</version>
 		</dependency>
 		
 		<dependency>
@@ -81,14 +143,26 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 		
+<!-- 		<dependency> -->
+<!-- 			<groupId>org.springframework.security.oauth</groupId> -->
+<!-- 			<artifactId>spring-security-oauth2</artifactId> -->
+<!-- 		</dependency> -->
+		
 		<dependency>
 			<groupId>org.springframework.security.oauth</groupId>
 			<artifactId>spring-security-oauth2</artifactId>
+			<version>${spring-security-oauth2.version}</version>
 		</dependency>
 		
+<!-- 		<dependency> -->
+<!--     		<groupId>org.springframework.security</groupId> -->
+<!--     		<artifactId>spring-security-jwt</artifactId> -->
+<!-- 		</dependency> -->
+
 		<dependency>
     		<groupId>org.springframework.security</groupId>
     		<artifactId>spring-security-jwt</artifactId>
+    		<version>${spring-security-jwt.version}</version>
 		</dependency>
 		
 	</dependencies>
