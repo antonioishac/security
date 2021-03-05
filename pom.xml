@@ -50,7 +50,7 @@
         
         <hibernate.version>5.4.1.Final</hibernate.version>
         
-        <spring-security-oauth2.version>2.2.1.RELEASE</spring-security-oauth2.version>
+        <spring-security-oauth2.version>2.2.5.RELEASE</spring-security-oauth2.version>
 		<spring-security-jwt.version>1.0.9.RELEASE</spring-security-jwt.version>
 
         <profile.no-liquibase />
